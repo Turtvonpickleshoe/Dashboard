@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="dash.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+<div class="layout">
+  <div class="list">
+  	<h1 class="task">Task List</h1>
+  </div>
+  <div class="tools">
+  	<div class="weather">Weather</div>
+  	<div class="entry">
+  		<h2>To Do Entry</h2>		  
+  		<input type="text" name="task" id="todo-input">
+		  <button id="addButton" type="submit">Add Task</button>		 
+  		<p>Type a description and press "Enter" to create a task-item.</p>
+  	</div>
+  	<div id="clock" class="clock">
+    </div>
+  	<div class="alarm">
+  		    <h1>Timer</h1>
+    <label for="hours">Hours:</label>
+    <input type="number" id="hours" min="0" max="24" />
+    <label for="minutes">Minutes:</label>
+    <input type="number" id="minutes" min="0" max="59" />
+    <label for="seconds">Seconds:</label>
+    <input type="number" id="seconds" min="0" max="59" />
+    <br /><br />
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+  	</div>
+  	<div class="quote">Classic Quotes</div>  	
+  </div>
+</div>
+<script type="text/javascript" src="dash.js"></script>
+<script>
+    // This is EJS templating syntax. It will be replaced with the actual list
+    // when the server renders the page.
+    const initialListState = <%- JSON.stringify(tasks) %>;
+
+    // Now you can use initialListState to initialize your list in the client
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const list = document.querySelector('.list');
+        initialListState.forEach(item => {
+            const newListItem = document.createElement('div');
+            newListItem.classList.add('list-item');
+            newListItem.textContent = item.task;
+
+            const newCircle = document.createElement('div');
+            newCircle.classList.add('circle');
+            newListItem.appendChild(newCircle);
+
+            list.appendChild(newListItem);
+        });
+    });
+</script>
+</body>
+</html>
