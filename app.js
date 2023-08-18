@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const ejs = require('ejs')
 app.use(express.static('public'));
 app.set('view engine','ejs')
-mongoose.connect('mongodb+srv://wayne86davenport:ikNnOEEmnWaVSNg5@cluster0.i33hhyp.mongodb.net/Dashboard?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://<#####>.mongodb.net/Dashboard?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
